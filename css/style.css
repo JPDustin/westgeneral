@@ -76,27 +76,28 @@ nav {
 
 .menu-toggle span {
   display: block;
-  width: 100%; /* span fills the 36px width */
-  height: 4px; /* bar thickness */
+  width: 28px;
+  height: 4px;
   background-color: #4b3621;
   border-radius: 2px;
-  margin-bottom: 6px; /* space between bars */
+  margin-bottom: 6px;
   transition: transform 0.4s ease, opacity 0.3s ease;
+  transform-origin: center center; /* make rotations pivot from the center */
 }
 
 .menu-toggle span:last-child {
   margin-bottom: 0;
 }
 
-/* Animate Hamburger → X */
+/* Open state: translate then rotate around center */
 .menu-toggle.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: translateY(10px) rotate(45deg);
 }
 .menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 /* Hero Image */
