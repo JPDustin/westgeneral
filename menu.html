@@ -12,14 +12,25 @@
 <body>
     <!-- Header -->
     <header>
-        <img src="images/wgs-logo.png" alt="Westmoreland General Store Logo" class="logo">
         <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="visit.html">Visit Us</a></li>
-            </ul>
+            <div class="logo">
+                <img src="images/wgs-logo.png" alt="Westmoreland General Store Logo">
+            </div>
+
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links">
+                <ul>
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="visit.html">Visit Us</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -73,6 +84,9 @@
     <footer>
         <p>© 2025 Westmoreland General Store. All rights reserved.</p>
     </footer>
+
+    <script src="js/menu.js"></script>
+
 </body>
 
 </html>
