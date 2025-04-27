@@ -52,7 +52,7 @@ nav {
   height: 4px;
   background-color: #4b3621;
   border-radius: 2px;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
 /* Animate Hamburger into X */
@@ -66,7 +66,7 @@ nav {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Navigation Links */
+/* Navigation Links (desktop) */
 .nav-links {
   display: flex;
   gap: 20px;
@@ -231,20 +231,14 @@ footer {
   text-align: center;
 }
 
-/* --- Mobile (≤768px) Off-Canvas Slide-In Menu --- */
+/* --- Mobile Responsive & Off-Canvas Slide-In Menu --- */
 @media (max-width: 768px) {
-  nav {
-    flex-wrap: wrap;
-    padding: 1rem 2rem;
-    position: relative;
-  }
-
+  /* Show hamburger */
   .menu-toggle {
     display: flex;
-    margin-left: auto;
-    z-index: 1001;
   }
 
+  /* Off-canvas nav */
   .nav-links {
     position: fixed;
     top: 0;
@@ -261,6 +255,7 @@ footer {
     pointer-events: none;
   }
 
+  /* Slide in when open */
   .nav-links.open {
     right: 0;
     pointer-events: auto;
@@ -278,35 +273,43 @@ footer {
     font-size: 1.2rem;
   }
 
+  /* Adjust nav layout */
+  nav {
+    flex-wrap: wrap;
+    padding: 1rem 20px;
+  }
+
+  /* Hero image height */
   .hero-image img {
     height: 250px;
   }
 
+  /* Welcome text */
   .welcome-text h1 {
     font-size: 2rem;
   }
-
   .welcome-text p {
     font-size: 1.2rem;
   }
 
+  /* Quick info stack */
   .quick-info {
     flex-direction: column;
     gap: 10px;
   }
 
+  /* Menu photos */
   .menu-photo {
     height: 250px;
   }
 
+  /* Menu page headers */
   .page-header h1 {
     font-size: 2.2rem;
   }
-
   .menu-section h2 {
     font-size: 1.6rem;
   }
-
   .menu-section li {
     font-size: 1rem;
   }
