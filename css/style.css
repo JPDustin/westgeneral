@@ -37,11 +37,10 @@ nav {
 
 /* Hamburger */
 .menu-toggle {
-  display: none;
+  display: none; /* shown only under 768px */
   flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 22px;
+  align-items: center;
+  padding: 8px;
   background: none;
   border: none;
   cursor: pointer;
@@ -50,12 +49,19 @@ nav {
 
 .menu-toggle span {
   display: block;
-  height: 4px;
+  width: 28px; /* explicit width so you see it */
+  height: 3px; /* slim bar */
   background-color: #4b3621;
   border-radius: 2px;
+  margin-bottom: 5px;
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
+.menu-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Animate Hamburger into X */
 .menu-toggle.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -96,6 +102,7 @@ nav {
   text-align: center;
   padding: 50px 20px;
 }
+
 .welcome-text h1 {
   font-size: 3rem;
   font-family: "Playfair Display", serif;
@@ -105,10 +112,11 @@ nav {
   color: #4b3621;
   margin-bottom: 20px;
 }
+
 .welcome-text p {
-  margin: 20px 0;
   font-size: 1.5rem;
   color: #6b4c32;
+  margin: 20px 0;
 }
 
 /* Buttons */
@@ -119,6 +127,7 @@ nav {
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
 .btn {
   background-color: #8b5e3c;
   color: #fff;
@@ -209,7 +218,7 @@ footer {
   text-align: center;
 }
 
-/* Mobile & Off-Canvas */
+/* Mobile & Off-Canvas Slide-In */
 @media (max-width: 768px) {
   header {
     padding: 8px 0;
@@ -217,9 +226,13 @@ footer {
   .logo img {
     height: 50px;
   }
+
+  /* show the hamburger */
   .menu-toggle {
     display: flex;
   }
+
+  /* off-canvas nav */
   .nav-links {
     position: fixed;
     top: 0;
@@ -242,6 +255,8 @@ footer {
     margin: 20px 0;
     text-align: center;
   }
+
+  /* shrink hero */
   .hero-image img {
     height: 250px;
   }
@@ -251,10 +266,14 @@ footer {
   .welcome-text p {
     font-size: 1.2rem;
   }
+
+  /* stack quick info */
   .quick-info {
     flex-direction: column;
     gap: 10px;
   }
+
+  /* shrink menu photos/text */
   .menu-photo {
     height: 250px;
   }
