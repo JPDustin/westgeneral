@@ -13,7 +13,7 @@ body {
   padding: 0 20px;
 }
 
-/* Header & Nav */
+/* ─── Header & Nav ─────────────────────────────────────────────────── */
 header {
   width: 100%;
   background-color: #fdf8f2;
@@ -28,6 +28,11 @@ nav {
   justify-content: space-between;
   padding: 0 20px;
   position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo */
@@ -36,73 +41,66 @@ nav {
   transition: height 0.3s;
 }
 
-/* Nav Links (desktop) */
+/* ─── Desktop Links ───────────────────────────────────────────────── */
 .nav-links {
-  list-style: none; /* remove bullets */
-  margin: 0; /* remove default ul margin */
-  padding: 0; /* remove default ul padding */
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
-
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
 .nav-links li {
-  list-style: none; /* extra bullet safeguard */
+  list-style: none;
 }
-
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
-  color: #4b3621;
   font-weight: bold;
+  color: #4b3621;
 }
-
-.nav-links li a.active {
+.nav-links a.active {
   text-decoration: underline;
 }
 
-/* Hamburger (mobile) */
+/* ─── Hamburger (mobile) ─────────────────────────────────────────── */
 .menu-toggle {
-  display: none; /* only show under 768px */
+  display: none;             /* ↪ shown only at ≤768px */
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  width: 36px; /* explicit clickable area */
-  height: 30px;
+  width: 34px;
+  height: 26px;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1001;
-  padding: 0;
 }
-
 .menu-toggle span {
-  display: block;
-  width: 28px;
+  position: relative;
+  width: 100%;
   height: 4px;
-  background-color: #4b3621;
+  background: #4b3621;
   border-radius: 2px;
-  margin-bottom: 6px;
   transition: transform 0.4s ease, opacity 0.3s ease;
-  transform-origin: center center; /* make rotations pivot from the center */
+}
+.menu-toggle span:nth-child(2) {
+  margin: 7px 0;
 }
 
-.menu-toggle span:last-child {
-  margin-bottom: 0;
-}
-
-/* Closed state: no transform */
-
-/* Open state: translate then rotate around center */
+/* ↪ morph into X */
 .menu-toggle.open span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
+  transform: translateY(11px) rotate(45deg);
 }
 .menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle.open span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Hero Image */
+/* ─── Hero Image ─────────────────────────────────────────────────── */
 .hero-image img {
   width: 100%;
   height: 600px;
@@ -110,7 +108,7 @@ nav {
   filter: brightness(90%);
 }
 
-/* Welcome Section */
+/* ─── Welcome Section ─────────────────────────────────────────────── */
 .welcome-text {
   text-align: center;
   padding: 50px 20px;
@@ -121,7 +119,6 @@ nav {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #4b3621;
   margin-bottom: 20px;
 }
 .welcome-text p {
@@ -130,7 +127,7 @@ nav {
   margin: 20px 0;
 }
 
-/* Buttons */
+/* ─── Buttons ─────────────────────────────────────────────────────── */
 .button-group {
   display: flex;
   gap: 20px;
@@ -152,17 +149,16 @@ nav {
   background-color: #a97451;
 }
 
-/* Quick Info */
+/* ─── Quick Info Bar ──────────────────────────────────────────────── */
 .quick-info {
   display: flex;
   justify-content: space-around;
   background-color: #ede5d9;
   padding: 20px;
   margin-top: 40px;
-  font-weight: bold;
   text-transform: uppercase;
+  font-weight: bold;
   color: #4b3621;
-  font-size: 1rem;
 }
 .quick-info div {
   flex: 1;
@@ -174,16 +170,16 @@ nav {
   font-weight: bold;
 }
 
-/* Footer */
+/* ─── Footer ──────────────────────────────────────────────────────── */
 footer {
   text-align: center;
   margin-top: 40px;
   padding: 20px;
   font-size: 0.9rem;
-  color: #8b5e3c;
+  color: #8b3621;
 }
 
-/* Menu Page */
+/* ─── Menu Page ───────────────────────────────────────────────────── */
 .menu-page {
   padding: 40px 20px;
 }
@@ -228,22 +224,15 @@ footer {
   text-align: center;
 }
 
-/* Mobile & Off-Canvas Slide-In */
+/* ─── Mobile & Off-Canvas Slide-In ────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Header shrink */
-  header {
-    padding: 8px 0;
-  }
-  .logo img {
-    height: 50px;
-  }
+  header { padding: 8px 0; }
+  .logo img { height: 50px; }
 
-  /* Show hamburger */
-  .menu-toggle {
-    display: flex;
-  }
+  /* show hamburger */
+  .menu-toggle { display: flex; }
 
-  /* Off-canvas nav */
+  /* off-canvas nav */
   .nav-links {
     position: fixed;
     top: 0;
@@ -252,45 +241,19 @@ footer {
     background-color: #fdf8f2;
     width: 70%;
     height: 100vh;
-    padding-top: 80px;
+    padding: 80px 2rem 2rem;
     transition: right 0.4s ease;
-    z-index: 1000;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     pointer-events: none;
+    z-index: 1000;
   }
   .nav-links.open {
     right: 0;
     pointer-events: auto;
   }
-  .nav-links li {
-    margin: 20px 0;
-    text-align: center;
-  }
-
-  /* Responsive tweaks */
-  .hero-image img {
-    height: 250px;
-  }
-  .welcome-text h1 {
-    font-size: 2rem;
-  }
-  .welcome-text p {
-    font-size: 1.2rem;
-  }
-  .quick-info {
+  .nav-links ul {
     flex-direction: column;
-    gap: 10px;
-  }
-  .menu-photo {
-    height: 250px;
-  }
-  .page-header h1 {
-    font-size: 2.2rem;
-  }
-  .menu-section h2 {
-    font-size: 1.6rem;
-  }
-  .menu-section li {
-    font-size: 1rem;
+    gap: 1.6rem;
+    text-align: center;
   }
 }
