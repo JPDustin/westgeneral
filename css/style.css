@@ -1,4 +1,17 @@
-/* Reset */
+/*──────────────────────────────────────────────────────────────────────────────
+  VARIABLES & RESET
+──────────────────────────────────────────────────────────────────────────────*/
+:root {
+  --breakpoint: 768px;
+  --color-bg: #fdf8f2;
+  --color-text: #4b3621;
+  --color-accent: #8b5e3c;
+  --color-accent-light: #a97451;
+  --color-quick-bg: #ede5d9;
+  --font-body: "Georgia", serif;
+  --font-heading: "Playfair Display", serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,209 +19,60 @@
 }
 
 body {
-  font-family: "Georgia", serif;
-  background-color: #fdf8f2;
-  color: #4b3621;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
   padding: 0 20px;
 }
 
-/* ─── Header & Nav ─────────────────────────────────────────────────── */
+/*──────────────────────────────────────────────────────────────────────────────
+  HEADER & NAV (MOBILE-DEFAULT)
+──────────────────────────────────────────────────────────────────────────────*/
 header {
-  width: 100%;
-  background-color: #fdf8f2;
-  padding: 10px 0;
+  background: var(--color-bg);
+  padding: 8px 0;
 }
-
 nav {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   transition: box-shadow 0.3s ease;
 }
-
 nav.scrolled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo */
 .logo img {
-  height: 60px;
+  height: 50px;
   transition: height 0.3s;
 }
 
-/* ─── Desktop Links ───────────────────────────────────────────────── */
-.nav-links {
-  display: flex;
-}
-.nav-links ul {
-  list-style: none;
-  display: flex;
-  gap: 24px;
-}
-.nav-links li {
-  list-style: none;
-}
-.nav-links a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #4b3621;
-}
-.nav-links a.active {
-  text-decoration: underline;
-}
-
-/* ─── Hero Image ─────────────────────────────────────────────────── */
-.hero-image img {
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
-  filter: brightness(90%);
-}
-
-/* ─── Welcome Section ─────────────────────────────────────────────── */
-.welcome-text {
-  text-align: center;
-  padding: 50px 20px;
-}
-.welcome-text h1 {
-  font-size: 3rem;
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-.welcome-text p {
-  font-size: 1.5rem;
-  color: #6b4c32;
-  margin: 20px 0;
-}
-
-/* ─── Buttons ─────────────────────────────────────────────────────── */
-.button-group {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-.btn {
-  background-color: #8b5e3c;
-  color: #fff;
-  text-decoration: none;
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-.btn:hover {
-  background-color: #a97451;
-}
-
-/* ─── Quick Info Bar ──────────────────────────────────────────────── */
-.quick-info {
-  display: flex;
-  justify-content: space-around;
-  background-color: #ede5d9;
-  padding: 20px;
-  margin-top: 40px;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #4b3621;
-}
-.quick-info div {
-  flex: 1;
-  text-align: center;
-}
-.quick-info a {
-  text-decoration: none;
-  color: #4b3621;
-  font-weight: bold;
-}
-
-/* ─── Footer ──────────────────────────────────────────────────────── */
-footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #4b3621;
-}
-
-/* ─── Menu Page ───────────────────────────────────────────────────── */
-.menu-page {
-  padding: 40px 20px;
-}
-.page-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-.page-header h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 3rem;
-  color: #4b3621;
-  margin-bottom: 10px;
-}
-.page-header p {
-  font-size: 1.2rem;
-  color: #6b4c32;
-}
-.menu-section {
-  margin-bottom: 60px;
-}
-.menu-photo {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-.menu-section h2 {
-  font-size: 2rem;
-  color: #8b5e3c;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.menu-section ul {
-  list-style: none;
-  padding: 0;
-}
-.menu-section li {
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* ─── Hamburger & Off‐Canvas (mobile) ───────────────────────────────── */
+/* Hamburger (visible under breakpoint) */
 .menu-toggle {
-  display: none; /* only show under 768px */
+  display: flex;
   position: relative;
-  width: 40px; /* ample hit area */
+  width: 40px;
   height: 40px;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1001;
-  margin-right: 20px; /* ensure spacing from right edge */
+  margin-right: 20px;
 }
-
 .menu-toggle span {
   position: absolute;
   left: 0;
   width: 100%;
   height: 4px;
-  background: #4b3621;
+  background: var(--color-text);
   border-radius: 2px;
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
-
 .menu-toggle span:nth-child(1) {
   top: 8px;
 }
@@ -219,7 +83,6 @@ footer {
   top: 28px;
 }
 
-/* morph to X */
 .menu-toggle.open span:nth-child(1) {
   transform: translateY(10px) rotate(45deg);
 }
@@ -230,54 +93,263 @@ footer {
   transform: translateY(-10px) rotate(-45deg);
 }
 
-@media (max-width: 768px) {
+/* Off-canvas links (hidden by default) */
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: var(--color-bg);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  padding: 80px 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+.nav-links.open {
+  right: 0;
+  pointer-events: auto;
+}
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+}
+.nav-links a.active {
+  text-decoration: underline;
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  HERO IMAGE
+──────────────────────────────────────────────────────────────────────────────*/
+.hero-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: brightness(90%);
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  WELCOME SECTION
+──────────────────────────────────────────────────────────────────────────────*/
+.welcome-text {
+  text-align: center;
+  padding: 30px 20px;
+}
+.welcome-text h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.welcome-text p {
+  font-size: 1.2rem;
+  color: #6b4c32;
+  margin: 10px 0;
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  BUTTONS
+──────────────────────────────────────────────────────────────────────────────*/
+.button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.btn {
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: var(--color-accent-light);
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  QUICK INFO (STACKED ON MOBILE)
+──────────────────────────────────────────────────────────────────────────────*/
+.quick-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-quick-bg);
+  padding: 20px;
+  margin-top: 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--color-text);
+}
+.quick-info div {
+  width: 100%;
+  text-align: center;
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  FOOTER
+──────────────────────────────────────────────────────────────────────────────*/
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  MENU PAGE (MOBILE)
+──────────────────────────────────────────────────────────────────────────────*/
+.menu-page {
+  padding: 20px;
+}
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+.page-header p {
+  font-size: 1rem;
+  color: #6b4c32;
+}
+.menu-section {
+  margin-bottom: 40px;
+}
+.menu-photo {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.menu-section h2 {
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.menu-section ul {
+  list-style: none;
+  padding: 0;
+}
+.menu-section li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+  DESKTOP OVERRIDES (min-width: 769px)
+──────────────────────────────────────────────────────────────────────────────*/
+@media (min-width: calc(var(--breakpoint) + 1px)) {
+  /* Header */
   header {
-    padding: 8px 0;
+    padding: 10px 0;
   }
   .logo img {
-    height: 50px;
+    height: 60px;
   }
 
+  /* Hide hamburger, show inline nav */
   .menu-toggle {
-    display: block;
+    display: none;
   }
-
   .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    flex-direction: column;
-    background-color: #fdf8f2;
-    width: 70%;
-    height: 100vh;
-    padding: 80px 2rem 2rem;
-    transition: right 0.4s ease;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    pointer-events: none;
-    z-index: 1000;
-  }
-  .nav-links.open {
-    right: 0;
+    position: static;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    padding: 0;
+    box-shadow: none;
     pointer-events: auto;
   }
   .nav-links ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    flex-direction: row;
+    gap: 24px;
+    text-align: initial;
   }
 
-  /* Stack the quick-info panels */
+  /* Hero */
+  .hero-image img {
+    height: 600px;
+  }
+
+  /* Welcome */
+  .welcome-text {
+    padding: 50px 20px;
+  }
+  .welcome-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  .welcome-text p {
+    font-size: 1.5rem;
+  }
+
+  /* Buttons */
+  .button-group {
+    margin-top: 20px;
+    gap: 20px;
+  }
+
+  /* Quick-info in row */
   .quick-info {
-    flex-direction: column;
-    gap: 20px; /* more breathing room */
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 40px;
+  }
+  .quick-info div {
+    text-align: center;
   }
 
-  /* Make each panel full-width */
-  .quick-info div {
-    width: 100%;
-    text-align: center; /* or left, if you prefer */
+  /* Menu-page */
+  .menu-page {
+    padding: 40px;
+  }
+  .page-header {
+    margin-bottom: 50px;
+  }
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 1.2rem;
+  }
+  .menu-photo {
+    height: 400px;
+  }
+  .menu-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .menu-section li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
   }
 }
