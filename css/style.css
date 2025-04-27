@@ -268,4 +268,16 @@ footer {
     margin: 0;
     padding: 0;
   }
+
+  /* Stack the quick-info panels */
+  .quick-info {
+    flex-direction: column;
+    gap: 20px; /* more breathing room */
+  }
+
+  /* Make each panel full-width */
+  .quick-info div {
+    width: 100%;
+    text-align: center; /* or left, if you prefer */
+  }
 }
