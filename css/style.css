@@ -186,22 +186,25 @@ nav.scrolled {
   background: var(--color-accent-light);
 }
 
-/* ───────────────────────────────────────────────────────────────
-Quick Info Bar ──────────────────────────────────────────────── */
+/*──────────────────────────────────────────────────────────────────────────────
+  QUICK INFO (STACKED ON MOBILE)
+──────────────────────────────────────────────────────────────────────────────*/
 .quick-info {
   display: flex;
-  justify-content: space-around;
-  background-color: #ede5d9;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-quick-bg);
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 30px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #4b3621;
+  color: var(--color-text);
 }
 .quick-info div {
-  flex: 1;
+  width: 100%;
   text-align: center;
 }
+
 .quick-info a {
   text-decoration: none;
   color: #4b3621;
