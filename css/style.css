@@ -30,23 +30,53 @@ nav {
   position: relative;
 }
 
-/* Logo */
 .logo img {
   height: 60px;
   transition: height 0.3s;
 }
 
-/* Nav Links (desktop) */
-.nav-links {
-  list-style: none; /* remove bullets */
-  margin: 0; /* remove default ul margin */
-  padding: 0; /* remove default ul padding */
-  display: flex;
-  gap: 20px;
+/* Hamburger */
+.menu-toggle {
+  display: none; /* shown only under 768px */
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
 }
 
-.nav-links li {
-  list-style: none; /* extra bullet safeguard */
+.menu-toggle span {
+  display: block;
+  width: 28px; /* explicit width so you see it */
+  height: 3px; /* slim bar */
+  background-color: #4b3621;
+  border-radius: 2px;
+  margin-bottom: 5px;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.menu-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Animate Hamburger into X */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Nav Links (desktop) */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links li a {
@@ -57,45 +87,6 @@ nav {
 
 .nav-links li a.active {
   text-decoration: underline;
-}
-
-/* Hamburger (mobile) */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-  position: relative;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin-bottom: 5px;
-  position: relative;
-  background: var(--primary-color);
-  border-radius: 3px;
-  transform-origin: center;
-  transition: transform 0.4s ease, opacity 0.3s ease;
-}
-
-.menu-toggle span:last-child {
-  margin-bottom: 0;
-}
-
-.menu-toggle.open span:first-child {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.open span:last-child {
-  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Hero Image */
@@ -111,6 +102,7 @@ nav {
   text-align: center;
   padding: 50px 20px;
 }
+
 .welcome-text h1 {
   font-size: 3rem;
   font-family: "Playfair Display", serif;
@@ -120,6 +112,7 @@ nav {
   color: #4b3621;
   margin-bottom: 20px;
 }
+
 .welcome-text p {
   font-size: 1.5rem;
   color: #6b4c32;
@@ -134,6 +127,7 @@ nav {
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
 .btn {
   background-color: #8b5e3c;
   color: #fff;
@@ -226,7 +220,6 @@ footer {
 
 /* Mobile & Off-Canvas Slide-In */
 @media (max-width: 768px) {
-  /* Header shrink */
   header {
     padding: 8px 0;
   }
@@ -234,46 +227,36 @@ footer {
     height: 50px;
   }
 
-  /* Show hamburger */
+  /* show the hamburger */
   .menu-toggle {
-    display: block;
-    margin-left: auto;
-    position: relative;
-    z-index: 1001;
+    display: flex;
   }
 
-  /* Off-canvas nav */
+  /* off-canvas nav */
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
+    flex-direction: column;
+    background-color: #fdf8f2;
     width: 70%;
     height: 100vh;
-    background-color: var(--white);
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    padding: 80px 2rem 2rem;
+    padding-top: 80px;
     transition: right 0.4s ease;
     z-index: 1000;
-
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     pointer-events: none;
   }
-
   .nav-links.open {
     right: 0;
     pointer-events: auto;
   }
-
   .nav-links li {
-    margin: 1.5rem 0;
+    margin: 20px 0;
+    text-align: center;
   }
 
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  /* Responsive tweaks */
+  /* shrink hero */
   .hero-image img {
     height: 250px;
   }
@@ -283,10 +266,14 @@ footer {
   .welcome-text p {
     font-size: 1.2rem;
   }
+
+  /* stack quick info */
   .quick-info {
     flex-direction: column;
     gap: 10px;
   }
+
+  /* shrink menu photos/text */
   .menu-photo {
     height: 250px;
   }
